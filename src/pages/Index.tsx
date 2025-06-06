@@ -40,7 +40,6 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 p-4">
       <div className="max-w-7xl mx-auto">
-        {/* 標題區域 */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-3">
             <Activity className="text-blue-600" size={40} />
@@ -53,7 +52,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* 統計卡片 */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <Card className="bg-gradient-to-r from-red-500 to-red-600 text-white">
             <CardHeader className="pb-2">
@@ -108,7 +106,6 @@ const Index = () => {
           </Card>
         </div>
 
-        {/* 狀態說明 */}
         <div className="flex justify-center gap-6 mb-8">
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 bg-red-500 rounded-full animate-pulse"></div>
@@ -124,7 +121,6 @@ const Index = () => {
           </div>
         </div>
 
-        {/* 醫院卡片網格 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {hospitals.map((hospital, index) => (
             <HospitalCard 
@@ -135,7 +131,6 @@ const Index = () => {
           ))}
         </div>
 
-        {/* 頁腳信息 */}
         <div className="text-center mt-12 text-gray-500 text-sm">
           <p>系統每30秒自動更新數據 | 急診壅塞指數 (EDCI) 即時監控</p>
         </div>
