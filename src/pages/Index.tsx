@@ -4,15 +4,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Activity, Users, UserCheck, Clock, AlertTriangle } from "lucide-react";
 import HospitalCard from "@/components/HospitalCard";
-import CompactHospitalList from "@/components/CompactHospitalList";
-import HospitalMapView from "@/components/HospitalMapView";
 import DashboardGaugeView from "@/components/DashboardGaugeView";
 import DashboardStyleSelector from "@/components/DashboardStyleSelector";
-import TimelineMonitorView from "@/components/TimelineMonitorView";
-import RadarPanoramaView from "@/components/RadarPanoramaView";
-import TacticalTableView from "@/components/TacticalTableView";
-import KanbanFlowView from "@/components/KanbanFlowView";
-import HeatmapView from "@/components/HeatmapView";
 import { Hospital, getHospitalData } from "@/data/hospitalData";
 
 const Index = () => {
@@ -41,12 +34,6 @@ const Index = () => {
     return hospitals.reduce((sum, h) => sum + h.totalPatients, 0);
   };
 
-  const getAverageEDCI = () => {
-    if (hospitals.length === 0) return 0;
-    const total = hospitals.reduce((sum, h) => sum + h.edci, 0);
-    return Math.round(total / hospitals.length * 10000) / 10000;
-  };
-
   const renderDashboard = () => {
     switch (dashboardStyle) {
       case 1:
@@ -61,18 +48,8 @@ const Index = () => {
             ))}
           </div>
         );
-      case 2:
-        return <TimelineMonitorView hospitals={hospitals} />;
-      case 3:
-        return <RadarPanoramaView hospitals={hospitals} />;
       case 4:
         return <DashboardGaugeView hospitals={hospitals} />;
-      case 5:
-        return <TacticalTableView hospitals={hospitals} />;
-      case 6:
-        return <KanbanFlowView hospitals={hospitals} />;
-      case 7:
-        return <HeatmapView hospitals={hospitals} />;
       default:
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
