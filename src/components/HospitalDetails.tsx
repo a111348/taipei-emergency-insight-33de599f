@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Hospital, getAlertReasons } from "@/data/hospitalData";
 import { Users, UserCheck, Clock, Stethoscope, Shield, Heart, AlertTriangle, TrendingUp } from "lucide-react";
@@ -11,40 +10,40 @@ const HospitalDetails = ({ hospital }: HospitalDetailsProps) => {
   const alertReasons = getAlertReasons(hospital);
 
   return (
-    <Card className="absolute top-0 left-full ml-4 w-96 z-50 shadow-2xl border-2 border-blue-200 bg-white animate-in slide-in-from-left duration-200">
-      <CardHeader className="bg-gradient-to-r from-blue-500 to-blue-600 text-white pb-3">
-        <CardTitle className="text-lg flex items-center gap-2">
-          <Heart size={20} />
+    <Card className="absolute top-0 left-full ml-6 w-[420px] z-50 shadow-2xl border-4 border-blue-300 bg-white/98 backdrop-blur-sm animate-in slide-in-from-left duration-300">
+      <CardHeader className="bg-gradient-to-r from-slate-700 to-slate-800 text-white pb-4">
+        <CardTitle className="text-xl flex items-center gap-3 font-bold">
+          <Heart size={24} className="text-red-400" />
           {hospital.name}
         </CardTitle>
-        <div className="text-blue-100 text-sm">詳細醫療資訊與指標分析</div>
+        <div className="text-slate-200 text-sm font-medium">詳細醫療資訊與指標分析</div>
       </CardHeader>
 
-      <CardContent className="p-4 space-y-4">
-        {/* EDCI 指數與關鍵指標 */}
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-3 border">
+      <CardContent className="p-6 space-y-5">
+        {/* EDCI 指數與關鍵指標 - 大螢幕優化 */}
+        <div className="bg-gradient-to-r from-slate-100 to-slate-200 rounded-xl p-4 border-2 border-slate-300">
           <div className="text-center">
-            <div className="text-xs text-gray-600 mb-1">急診壅塞指數</div>
-            <div className={`text-3xl font-bold ${
-              hospital.status === 'emergency' ? 'text-red-600' : 
-              hospital.status === 'warning' ? 'text-yellow-600' : 'text-green-600'
+            <div className="text-sm text-slate-700 mb-2 font-semibold">急診壅塞指數</div>
+            <div className={`text-4xl font-black tracking-tight ${
+              hospital.status === 'emergency' ? 'text-red-700' : 
+              hospital.status === 'warning' ? 'text-amber-600' : 'text-emerald-700'
             }`}>
-              EDCI: {hospital.edci.toFixed(4)}
+              EDCI: {hospital.edci.toFixed(2)}
             </div>
           </div>
           
-          <div className="grid grid-cols-2 gap-3 mt-3 text-sm">
-            <div className="text-center p-2 bg-white rounded">
-              <div className={`font-semibold ${hospital.adjustedPBR > 80 ? 'text-red-700' : 'text-blue-700'}`}>
+          <div className="grid grid-cols-2 gap-4 mt-4 text-sm">
+            <div className="text-center p-3 bg-white rounded-lg border-2 border-slate-200">
+              <div className={`font-black text-lg ${hospital.adjustedPBR > 80 ? 'text-red-700' : 'text-slate-700'}`}>
                 {hospital.adjustedPBR.toFixed(1)}
               </div>
-              <div className="text-gray-600 text-xs">醫師壓力比</div>
+              <div className="text-slate-600 text-sm font-medium">醫師壓力比</div>
             </div>
-            <div className="text-center p-2 bg-white rounded">
-              <div className={`font-semibold ${hospital.NBR > 40 ? 'text-red-700' : 'text-green-700'}`}>
+            <div className="text-center p-3 bg-white rounded-lg border-2 border-slate-200">
+              <div className={`font-black text-lg ${hospital.NBR > 40 ? 'text-red-700' : 'text-emerald-700'}`}>
                 {hospital.NBR.toFixed(1)}
               </div>
-              <div className="text-gray-600 text-xs">護理壓力比</div>
+              <div className="text-slate-600 text-sm font-medium">護理壓力比</div>
             </div>
           </div>
         </div>
@@ -151,18 +150,18 @@ const HospitalDetails = ({ hospital }: HospitalDetailsProps) => {
           </div>
         </div>
 
-        {/* 問題警示 */}
+        {/* 問題警示 - 增強大螢幕可見度 */}
         {alertReasons.length > 0 && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-            <h4 className="font-semibold text-red-700 mb-2 flex items-center gap-2">
-              <AlertTriangle size={16} />
+          <div className="bg-red-100 border-2 border-red-300 rounded-xl p-4">
+            <h4 className="font-black text-red-800 mb-3 flex items-center gap-2 text-base">
+              <AlertTriangle size={20} />
               主要問題分析
             </h4>
-            <div className="space-y-1">
+            <div className="space-y-2">
               {alertReasons.map((reason, index) => (
-                <div key={index} className="flex items-start gap-2">
-                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2 flex-shrink-0"></div>
-                  <span className="text-sm text-red-700">{reason}</span>
+                <div key={index} className="flex items-start gap-3">
+                  <div className="w-3 h-3 bg-red-600 rounded-full mt-1 flex-shrink-0"></div>
+                  <span className="text-sm text-red-800 font-medium">{reason}</span>
                 </div>
               ))}
             </div>

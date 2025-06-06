@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +7,11 @@ import CompactHospitalList from "@/components/CompactHospitalList";
 import HospitalMapView from "@/components/HospitalMapView";
 import DashboardGaugeView from "@/components/DashboardGaugeView";
 import DashboardStyleSelector from "@/components/DashboardStyleSelector";
+import TimelineMonitorView from "@/components/TimelineMonitorView";
+import RadarPanoramaView from "@/components/RadarPanoramaView";
+import TacticalTableView from "@/components/TacticalTableView";
+import KanbanFlowView from "@/components/KanbanFlowView";
+import HeatmapView from "@/components/HeatmapView";
 import { Hospital, getHospitalData } from "@/data/hospitalData";
 
 const Index = () => {
@@ -57,11 +61,17 @@ const Index = () => {
           </div>
         );
       case 2:
-        return <CompactHospitalList hospitals={hospitals} />;
+        return <TimelineMonitorView hospitals={hospitals} />;
       case 3:
-        return <HospitalMapView hospitals={hospitals} />;
+        return <RadarPanoramaView hospitals={hospitals} />;
       case 4:
         return <DashboardGaugeView hospitals={hospitals} />;
+      case 5:
+        return <TacticalTableView hospitals={hospitals} />;
+      case 6:
+        return <KanbanFlowView hospitals={hospitals} />;
+      case 7:
+        return <HeatmapView hospitals={hospitals} />;
       default:
         return (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -78,7 +88,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 p-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-3">
