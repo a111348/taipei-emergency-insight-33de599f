@@ -60,11 +60,9 @@ const RadarPanoramaView = ({ hospitals }: RadarPanoramaViewProps) => {
                     key={ring}
                     className="absolute inset-0 border-2 border-green-400/30 rounded-full"
                     style={{ 
-                      transform: `scale(${ring * 0.33})`,
+                      transform: `scale(${ring * 0.33}) translate(-50%, -50%)`,
                       top: '50%',
-                      left: '50%',
-                      translateX: '-50%',
-                      translateY: '-50%'
+                      left: '50%'
                     }}
                   />
                 ))}
