@@ -117,7 +117,7 @@ const Index = () => {
           </div>
           <div className="flex items-center gap-2">
             <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-            <span className="text-sm text-gray-600">正常 (EDCI < 65)</span>
+            <span className="text-sm text-gray-600">正常 (EDCI &lt; 65)</span>
           </div>
         </div>
 
